@@ -29,7 +29,7 @@ public class MyJet extends Actor
             setLocation(200, getY() + 15);
         }
         
-        if (pressedKey != null && pressedKey.equals("up"))
+        if (pressedKey != null && pressedKey.equals("space"))
         {
             MyMissile myMissile = new MyMissile();
             world.addObject(myMissile, getX() + 220, getY());

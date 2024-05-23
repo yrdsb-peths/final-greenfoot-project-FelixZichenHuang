@@ -10,7 +10,7 @@ public class MyWorld extends World
 {
     int score = 0;
     int level = 1;
-    int missilesLeft = 18;
+    int missilesLeft = 20;
     Label scoreLabel;
     Label levelLabel;
     Label missilesLeftLabel;
@@ -101,7 +101,7 @@ public class MyWorld extends World
         {
             level++;
             levelLabel.setValue("Level: " + level);
-            missilesLeft = 18 * level;
+            missilesLeft = 20 * level;
         }
     }
     

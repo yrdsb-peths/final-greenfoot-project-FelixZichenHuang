@@ -17,6 +17,17 @@ public class EnemyMissile2 extends Actor
         move(-17);
         MyWorld world = (MyWorld) getWorld();
         
+        if (isTouching(MyMissile.class))
+        {
+            world.increaseScore();
+            Explosion explosion = new Explosion();
+            world.addObject(explosion, getX(), getY());
+            explosion.setSpeed(-13);
+            world.createEnemyMissile();
+            getWorld().removeObject(this);
+            return;
+        }
+        
         if (getX() <= -200)
         {
             world.removeObject(this);
