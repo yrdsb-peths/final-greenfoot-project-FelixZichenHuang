@@ -19,7 +19,7 @@ public class EnemyJet2 extends Actor
         
         if (isTouching(MyMissile.class))
         {
-            removeTouching(MyMissile.class);
+            world.increaseScore();
             Explosion explosion = new Explosion();
             world.addObject(explosion, getX(), getY());
             explosion.setSpeed(-8);

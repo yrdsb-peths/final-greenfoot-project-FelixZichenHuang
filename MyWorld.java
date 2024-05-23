@@ -10,6 +10,10 @@ public class MyWorld extends World
 {
     int score = 0;
     int level = 1;
+    int missilesLeft = 18;
+    Label scoreLabel;
+    Label levelLabel;
+    Label missilesLeftLabel;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -22,6 +26,16 @@ public class MyWorld extends World
         
         MyJet myJet = new MyJet();
         addObject(myJet, 200, 400);
+        
+        scoreLabel = new Label("Score: ", 30);
+        scoreLabel.setValue("Score: " + score);
+        levelLabel = new Label("Level: ", 30);
+        levelLabel.setValue("Level: " + level);
+        missilesLeftLabel = new Label("Missiles Left: ", 30);
+        missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
+        addObject(scoreLabel, 200, 50);
+        addObject(levelLabel, 600, 50);
+        addObject(missilesLeftLabel, 1000, 50);
         
         createEnemyJet();
         createEnemyMissile();
@@ -71,5 +85,29 @@ public class MyWorld extends World
             int y2 = Greenfoot.getRandomNumber(600) + 100;
             addObject(enemyMissile2, 1400, y2);
         }
+    }
+    
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue("Score: " + score);
+        
+        int levelPassingScore = 0;
+        for (int l = 1; l <= level; l++)
+        {
+            levelPassingScore += 15 * l;
+        }
+        if (score % levelPassingScore == 0)
+        {
+            level++;
+            levelLabel.setValue("Level: " + level);
+            missilesLeft = 18 * level;
+        }
+    }
+    
+    public void decreaseMissilesNumber()
+    {
+        missilesLeft--;
+        missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
     }
 }

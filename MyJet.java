@@ -8,27 +8,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyJet extends Actor
 {
+    //GreenfootSound myJetSound = new GreenfootSound("MyJetSound.mp3");
+    
     /**
      * Act - do whatever the MyJet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+        String pressedKey = Greenfoot.getKey();
         MyWorld world = (MyWorld) getWorld();
+        //myJetSound.play();
         
         if (Greenfoot.isKeyDown("left"))
         {
-            setLocation(200, getY() - 12);
+            setLocation(200, getY() - 15);
         }
         else if (Greenfoot.isKeyDown("right"))
         {
-            setLocation(200, getY() + 12);
+            setLocation(200, getY() + 15);
         }
         
-        if (Greenfoot.isKeyDown("up"))
+        if (pressedKey != null && pressedKey.equals("up"))
         {
             MyMissile myMissile = new MyMissile();
             world.addObject(myMissile, getX() + 220, getY());
+            world.decreaseMissilesNumber();
         }
         
         if (isTouching(EnemyMissile1.class))
