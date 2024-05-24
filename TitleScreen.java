@@ -16,7 +16,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    Label titleLabel = new Label("Top Gun: Gaming", 60);
+    Label titleLabel = new Label("Top Gun: Gaming", 80);
     GreenfootSound opening = new GreenfootSound("TopGun.mp3");
     
     /**
@@ -56,7 +56,7 @@ public class TitleScreen extends World
         MyJet myJet = new MyJet();
         addObject(myJet, 200, 400);
         Label label = new Label("Use \u2190 key to move the jet upward\nUse \u2192 key to move the jet downward\nUse <space> bar to launch missiles", 40);
-        addObject(label, 750, 400);
+        addObject(label, 750, 410);
         Label label2 = new Label("Press <enter> key to start", 40);
         addObject(label2, 750, 500);
     }
