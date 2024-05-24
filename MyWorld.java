@@ -14,6 +14,7 @@ public class MyWorld extends World
     Label scoreLabel;
     Label levelLabel;
     Label missilesLeftLabel;
+    GreenfootSound myJetSound = new GreenfootSound("MyJetSound.mp3");
     
     /**
      * Constructor for objects of class MyWorld.
@@ -109,5 +110,15 @@ public class MyWorld extends World
     {
         missilesLeft--;
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
+    }
+    
+    public void started()
+    {
+        myJetSound.playLoop();
+    }
+    
+    public void stopped()
+    {
+        myJetSound.pause();
     }
 }

@@ -15,17 +15,16 @@ public class MyMissile extends Actor
     public void act()
     {
         move(5);
-        MyWorld world = (MyWorld) getWorld();
         
         if (getX() >= 1400)
         {
-            world.removeObject(this);
+            getWorld().removeObject(this);
             return;
         }
         
         if (isTouching(Explosion.class))
         {
-            world.removeObject(this);
+            getWorld().removeObject(this);
             return;
         }
     }

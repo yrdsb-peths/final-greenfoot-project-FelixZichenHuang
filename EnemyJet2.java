@@ -15,6 +15,8 @@ public class EnemyJet2 extends Actor
     public void act()
     {
         move(-12);
+        GreenfootSound explosionSound = new GreenfootSound("ExplosionSound.mp3");
+        
         MyWorld world = (MyWorld) getWorld();
         
         if (isTouching(MyMissile.class))
@@ -22,6 +24,7 @@ public class EnemyJet2 extends Actor
             world.increaseScore();
             Explosion explosion = new Explosion();
             world.addObject(explosion, getX(), getY());
+            explosionSound.play();
             explosion.setSpeed(-8);
             world.createEnemyJet();
             getWorld().removeObject(this);
