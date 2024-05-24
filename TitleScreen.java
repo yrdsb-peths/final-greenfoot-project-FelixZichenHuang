@@ -16,7 +16,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    Label titleLabel = new Label("Top Gun: Gaming", 80);
+    Label titleLabel = new Label("TOP GUN: GAMING", 80);
     GreenfootSound opening = new GreenfootSound("TopGun.mp3");
     
     /**
