@@ -29,17 +29,18 @@ public class MyJet extends Actor
         
         if (pressedKey != null && pressedKey.equals("space"))
         {
-            MyMissile myMissile = new MyMissile();
-            getWorld().addObject(myMissile, getX() + 220, getY());
-            myMissileSound.play();
-            if (getWorld().equals(MyWorld.class))
+            if (getWorld().getClass().equals(MyWorld.class) && ((MyWorld) getWorld()).getMissilesNumber() > 0)
             {
+                MyMissile myMissile = new MyMissile();
+                getWorld().addObject(myMissile, getX() + 220, getY());
+                myMissileSound.play();
                 ((MyWorld) getWorld()).decreaseMissilesNumber();
             }
-            else if (getWorld().equals(TitleScreen.class))
+            else if (getWorld().getClass().equals(TitleScreen.class))
             {
-                MyWorld world = new MyWorld();
-                world.decreaseMissilesNumber();
+                MyMissile myMissile = new MyMissile();
+                getWorld().addObject(myMissile, getX() + 220, getY());
+                myMissileSound.play();
             }
         }
         
@@ -50,6 +51,7 @@ public class MyJet extends Actor
             getWorld().addObject(explosion, getX(), getY());
             explosionSound.play();
             explosion.setSpeed(0);
+            ((MyWorld) getWorld()).gameOver();
             getWorld().removeObject(this);
             return;
         }
@@ -60,6 +62,7 @@ public class MyJet extends Actor
             getWorld().addObject(explosion, getX(), getY());
             explosionSound.play();
             explosion.setSpeed(0);
+            ((MyWorld) getWorld()).gameOver();
             getWorld().removeObject(this);
             return;
         }
