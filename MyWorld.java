@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     int score = 0;
-    int level = 1;
-    int missilesLeft = 20;
+    int level;
+    int missilesLeft;
     Label scoreLabel;
     Label levelLabel;
     Label missilesLeftLabel;
@@ -20,10 +20,13 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public MyWorld(int currentLevel)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1, false);
+        
+        level = currentLevel;
+        missilesLeft = level * 10 + 5;
         
         MyJet myJet = new MyJet();
         addObject(myJet, 200, 400);
@@ -122,16 +125,9 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue("Score: " + score);
         
-        int levelPassingScore = 0;
-        for (int l = 1; l <= level; l++)
+        if (score / 10 == level)
         {
-            levelPassingScore += 15 * l;
-        }
-        if (score % levelPassingScore == 0)
-        {
-            level++;
-            levelLabel.setValue("Level: " + level);
-            missilesLeft = 20 * level;
+            levelPassed();
         }
     }
     
@@ -146,12 +142,42 @@ public class MyWorld extends World
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
     }
     
+    public void levelPassed()
+    {
+        myJetSound.stop();
+        LevelPassedScreen levelPassedScreen = new LevelPassedScreen(level);
+        Greenfoot.setWorld(levelPassedScreen);
+    }
+    
     public void gameOver()
     {
         Label gameOverLabel = new Label("Game Over", 200);
-        addObject(gameOverLabel, 600, 400);
+        addObject(gameOverLabel, 600, 350);
+        Label returnLabel1 = new Label("Press <R> key to return to the previous level passing screen", 40);
+        addObject(returnLabel1, 600, 450);
+        Label returnLabel2 = new Label("or Level One introduction screen", 40);
+        addObject(returnLabel2, 600, 500);
         missilesLeft = 0;
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
+        act();
+    }
+    
+    public void act()
+    {
+        if (Greenfoot.isKeyDown("r"))
+        {
+            myJetSound.stop();
+            if (level == 1)
+            {
+                LevelOneIntroScreen levelOneIntroScreen = new LevelOneIntroScreen();
+                Greenfoot.setWorld(levelOneIntroScreen);
+            }
+            else
+            {
+                LevelPassedScreen previousLevelPassedScreen = new LevelPassedScreen(level - 1);
+                Greenfoot.setWorld(previousLevelPassedScreen);
+            }
+        }
     }
     
     public void started()
