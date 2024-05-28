@@ -21,13 +21,13 @@ public class EnemyJet3 extends Actor
         
         if (isTouching(MyMissile.class))
         {
-            world.increaseScore();
+            explosionSound.play();
             Explosion explosion = new Explosion();
             world.addObject(explosion, getX(), getY());
-            explosionSound.play();
             explosion.setSpeed(-8);
             world.createEnemyJet();
             getWorld().removeObject(this);
+            world.increaseScore();
             return;
         }
         

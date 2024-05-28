@@ -18,7 +18,6 @@ public class TitleScreen extends World
 {
     Label titleLabel = new Label("TOP GUN: GAMING", 80);
     GreenfootSound opening = new GreenfootSound("TopGun.mp3");
-    String pressedKey = Greenfoot.getKey();
     
     /**
      * 
@@ -39,7 +38,8 @@ public class TitleScreen extends World
     public void act()
     {
         // Start the game if user presses the enter key.
-        if(Greenfoot.isKeyDown("s"))
+        String pressedKey = Greenfoot.getKey();
+        if(pressedKey != null && pressedKey.equals("enter"))
         {
             opening.stop();
             LevelOneIntroScreen levelOneIntro = new LevelOneIntroScreen();
@@ -56,9 +56,9 @@ public class TitleScreen extends World
     {
         MyJet myJet = new MyJet();
         addObject(myJet, 200, 400);
-        Label label = new Label("Use \u2190 key to move the jet upward\nUse \u2192 key to move the jet downward\nUse <space> bar to launch missiles", 40);
+        Label label = new Label("Use \u2190 key to move the jet upward\nUse \u2192 key to move the jet downward\nUse <Space> bar to launch missiles", 40);
         addObject(label, 750, 410);
-        Label label2 = new Label("Press <S> key to start", 40);
+        Label label2 = new Label("Press <Enter> key to start", 40);
         addObject(label2, 750, 500);
     }
     

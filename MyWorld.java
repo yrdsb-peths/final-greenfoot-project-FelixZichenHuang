@@ -11,10 +11,12 @@ public class MyWorld extends World
     int score = 0;
     int level;
     int missilesLeft;
+    boolean levelFailed = false;
     Label scoreLabel;
     Label levelLabel;
     Label missilesLeftLabel;
     GreenfootSound myJetSound = new GreenfootSound("MyJetSound.mp3");
+    GreenfootSound levelFailedMusic = new GreenfootSound("Tenessee.mp3");
     
     /**
      * Constructor for objects of class MyWorld.
@@ -127,6 +129,7 @@ public class MyWorld extends World
         
         if (score / 10 == level)
         {
+            Greenfoot.delay(20);
             levelPassed();
         }
     }
@@ -149,14 +152,15 @@ public class MyWorld extends World
         Greenfoot.setWorld(levelPassedScreen);
     }
     
-    public void gameOver()
+    public void levelFailed()
     {
-        Label gameOverLabel = new Label("Game Over", 200);
-        addObject(gameOverLabel, 600, 350);
-        Label returnLabel1 = new Label("Press <R> key to return to the previous level passing screen", 40);
-        addObject(returnLabel1, 600, 450);
-        Label returnLabel2 = new Label("or Level One introduction screen", 40);
-        addObject(returnLabel2, 600, 500);
+        levelFailed = true;
+        myJetSound.stop();
+        levelFailedMusic.playLoop();
+        Label levelFailedLabel = new Label("You Failed", 200);
+        addObject(levelFailedLabel, 600, 350);
+        Label returnLabel = new Label("Press <R> key to return to the previous level passing screen\nor Level One introduction screen", 40);
+        addObject(returnLabel, 600, 500);
         missilesLeft = 0;
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
         act();
@@ -166,7 +170,7 @@ public class MyWorld extends World
     {
         if (Greenfoot.isKeyDown("r"))
         {
-            myJetSound.stop();
+            levelFailedMusic.stop();
             if (level == 1)
             {
                 LevelOneIntroScreen levelOneIntroScreen = new LevelOneIntroScreen();
@@ -182,11 +186,25 @@ public class MyWorld extends World
     
     public void started()
     {
-        myJetSound.playLoop();
+        if (levelFailed)
+        {
+            levelFailedMusic.playLoop();
+        }
+        else
+        {
+            myJetSound.playLoop();
+        }
     }
     
     public void stopped()
     {
-        myJetSound.pause();
+        if (levelFailed)
+        {
+            levelFailedMusic.pause();
+        }
+        else
+        {
+            myJetSound.pause();
+        }
     }
 }

@@ -37,7 +37,8 @@ public class LevelOneIntroScreen extends World
     
     public void act()
     {
-        if(Greenfoot.isKeyDown("enter"))
+        String pressedKey = Greenfoot.getKey();
+        if(pressedKey != null && pressedKey.equals("enter"))
         {
             theme.stop();
             MyWorld gameWorld = new MyWorld(1);

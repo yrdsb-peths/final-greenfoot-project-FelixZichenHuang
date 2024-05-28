@@ -22,10 +22,10 @@ public class EnemyMissile2 extends Actor
         
         if (isTouching(MyMissile.class))
         {
+            explosionSound.play();
             world.increaseScore();
             Explosion explosion = new Explosion();
             world.addObject(explosion, getX(), getY());
-            explosionSound.play();
             explosion.setSpeed(-13);
             world.createEnemyMissile();
             getWorld().removeObject(this);
