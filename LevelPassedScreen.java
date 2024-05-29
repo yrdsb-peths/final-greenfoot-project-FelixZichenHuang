@@ -26,14 +26,16 @@ public class LevelPassedScreen extends World
         
         nextLevel = passedLevel + 1;
         
+        Medal medal = new Medal();
+        addObject(medal, 600, 270);
         label1 = new Label("You've passed Level " + passedLevel + ". Congratulations!", 40);
-        addObject(label1, 600, 250);
+        addObject(label1, 600, 490);
         label2 = new Label("You need to shoot down " + nextLevel * 10 + " jets to pass Level " + nextLevel, 40);
-        addObject(label2, 600, 350);
+        addObject(label2, 600, 540);
         label3 = new Label("Your jet will have " + (nextLevel * 10 + 5) + " missiles in Level " + nextLevel + "", 40);
-        addObject(label3, 600, 450);
+        addObject(label3, 600, 590);
         label4 = new Label("Press <Enter> key to continue. Good Luck!", 40);
-        addObject(label4, 600, 550);
+        addObject(label4, 600, 640);
         
         theme.playLoop();
     }
