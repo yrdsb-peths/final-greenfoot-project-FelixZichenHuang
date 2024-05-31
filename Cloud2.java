@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Cloud2 here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Felix Huang 
+ * @version May 2024
  */
 public class Cloud2 extends Actor
 {
