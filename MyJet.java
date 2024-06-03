@@ -47,9 +47,8 @@ public class MyJet extends Actor
         {
             explosionSound.play();
             removeTouching(EnemyMissile1.class);
-            Explosion explosion = new Explosion();
+            Explosion explosion = new Explosion(0);
             getWorld().addObject(explosion, getX(), getY());
-            explosion.setSpeed(0);
             ((MyWorld) getWorld()).levelFailed();
             getWorld().removeObject(this);
             return;
@@ -58,9 +57,8 @@ public class MyJet extends Actor
         {
             explosionSound.play();
             removeTouching(EnemyMissile2.class);
-            Explosion explosion = new Explosion();
+            Explosion explosion = new Explosion(0);
             getWorld().addObject(explosion, getX(), getY());
-            explosion.setSpeed(0);
             ((MyWorld) getWorld()).levelFailed();
             getWorld().removeObject(this);
             return;

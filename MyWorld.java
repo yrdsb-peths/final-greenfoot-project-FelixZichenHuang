@@ -17,6 +17,7 @@ public class MyWorld extends World
     Label missilesLeftLabel;
     GreenfootSound myJetSound = new GreenfootSound("MyJetSound.mp3");
     GreenfootSound levelFailedMusic = new GreenfootSound("Tenessee.mp3");
+    SimpleTimer timer = new SimpleTimer();
     
     /**
      * Constructor for objects of class MyWorld.
@@ -129,7 +130,7 @@ public class MyWorld extends World
         
         if (score / 10 == level)
         {
-            Greenfoot.delay(20);
+            Greenfoot.delay(3);
             levelPassed();
         }
     }
@@ -151,7 +152,7 @@ public class MyWorld extends World
         LevelPassedScreen levelPassedScreen = new LevelPassedScreen(level);
         Greenfoot.setWorld(levelPassedScreen);
     }
-    
+
     public void levelFailed()
     {
         levelFailed = true;
