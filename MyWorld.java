@@ -27,6 +27,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1, false);
+        setPaintOrder(Label.class, MyJet.class);
         
         level = currentLevel;
         missilesLeft = level * 10 + 5;
