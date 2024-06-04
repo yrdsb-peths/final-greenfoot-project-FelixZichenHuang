@@ -29,7 +29,12 @@ public class TitleScreen extends World
         super(1200, 800, 1, false);
         setPaintOrder(Label.class);
         addObject(titleLabel, 750, 300);
-        prepare();
+        MyJet myJet = new MyJet();
+        addObject(myJet, 200, 400);
+        Label label = new Label("Use \u2190 key to move the jet upward\nUse \u2192 key to move the jet downward\nUse <Space> bar to launch missiles", 40);
+        addObject(label, 750, 410);
+        Label label2 = new Label("Press <Enter> key to start", 40);
+        addObject(label2, 750, 500);
     }
 
     /**
@@ -43,24 +48,9 @@ public class TitleScreen extends World
         if(pressedKey != null && pressedKey.equals("enter"))
         {
             opening.stop();
-            LevelOneIntroScreen levelOneIntro = new LevelOneIntroScreen();
+            NewLevelIntroScreen levelOneIntro = new NewLevelIntroScreen(1);
             Greenfoot.setWorld(levelOneIntro);
         }
-    }
-    
-    /**
-     * 
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
-        MyJet myJet = new MyJet();
-        addObject(myJet, 200, 400);
-        Label label = new Label("Use \u2190 key to move the jet upward\nUse \u2192 key to move the jet downward\nUse <Space> bar to launch missiles", 40);
-        addObject(label, 750, 410);
-        Label label2 = new Label("Press <Enter> key to start", 40);
-        addObject(label2, 750, 500);
     }
     
     /**

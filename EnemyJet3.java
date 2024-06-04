@@ -22,6 +22,7 @@ public class EnemyJet3 extends Actor
         if (isTouching(MyMissile.class))
         {
             explosionSound.play();
+            removeTouching(MyMissile.class);
             Explosion explosion = new Explosion(-8);
             world.addObject(explosion, getX(), getY());
             world.createEnemyJet();

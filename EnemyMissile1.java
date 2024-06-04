@@ -24,6 +24,7 @@ public class EnemyMissile1 extends Actor
         if (isTouching(MyMissile.class))
         {
             explosionSound.play();
+            removeTouching(MyMissile.class);
             Explosion explosion = new Explosion(-13);
             world.addObject(explosion, getX(), getY());
             world.createEnemyMissile();

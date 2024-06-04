@@ -11,6 +11,7 @@ public class MyWorld extends World
     int score = 0;
     int level;
     int missilesLeft;
+    int finalLevel = 10;
     boolean levelFailed = false;
     Label scoreLabel;
     Label levelLabel;
@@ -132,7 +133,14 @@ public class MyWorld extends World
         if (score / 10 == level)
         {
             Greenfoot.delay(3);
-            levelPassed();
+            if (level == 10)
+            {
+                gameWon();
+            }
+            else
+            {
+                levelPassed();
+            }
         }
     }
     
@@ -150,8 +158,15 @@ public class MyWorld extends World
     public void levelPassed()
     {
         myJetSound.stop();
-        LevelPassedScreen levelPassedScreen = new LevelPassedScreen(level);
-        Greenfoot.setWorld(levelPassedScreen);
+        NewLevelIntroScreen newLevelIntroScreen = new NewLevelIntroScreen(level + 1);
+        Greenfoot.setWorld(newLevelIntroScreen);
+    }
+    
+    public void gameWon()
+    {
+        myJetSound.stop();
+        GameWonScreen gameWonScreen = new GameWonScreen();
+        Greenfoot.setWorld(gameWonScreen);
     }
 
     public void levelFailed()
@@ -170,19 +185,11 @@ public class MyWorld extends World
     
     public void act()
     {
-        if (Greenfoot.isKeyDown("r"))
+        if (levelFailed && Greenfoot.isKeyDown("r"))
         {
             levelFailedMusic.stop();
-            if (level == 1)
-            {
-                LevelOneIntroScreen levelOneIntroScreen = new LevelOneIntroScreen();
-                Greenfoot.setWorld(levelOneIntroScreen);
-            }
-            else
-            {
-                LevelPassedScreen previousLevelPassedScreen = new LevelPassedScreen(level - 1);
-                Greenfoot.setWorld(previousLevelPassedScreen);
-            }
+            NewLevelIntroScreen thisLevelIntroScreen = new NewLevelIntroScreen(level);
+            Greenfoot.setWorld(thisLevelIntroScreen);
         }
     }
     

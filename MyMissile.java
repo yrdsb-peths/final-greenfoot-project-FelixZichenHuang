@@ -21,11 +21,5 @@ public class MyMissile extends Actor
             getWorld().removeObject(this);
             return;
         }
-        
-        if (isTouching(Explosion.class))
-        {
-            getWorld().removeObject(this);
-            return;
-        }
     }
 }
