@@ -26,7 +26,6 @@ public class MyWorld extends World
      */
     public MyWorld(int currentLevel)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1, false);
         setPaintOrder(Label.class, MyJet.class);
         
@@ -56,6 +55,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly select one type of enemy jet and add it to MyWorld.
+     * 
+     */
     public void createEnemyJet()
     {
         int r = Greenfoot.getRandomNumber(4);
@@ -85,6 +88,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly select one type of enemy missile and add it to MyWorld.
+     * 
+     */
     public void createEnemyMissile()
     {
         int r = Greenfoot.getRandomNumber(2);
@@ -102,6 +109,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly select one type of clound and add it to MyWorld.
+     * 
+     */
     public void createCloud()
     {
         int r = Greenfoot.getRandomNumber(3);
@@ -125,6 +136,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Increase score by one if my missile hits one enemy jet.
+     * 
+     */
     public void increaseScore()
     {
         score++;
@@ -144,17 +159,29 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Return the number of missiles left in the player's jet.
+     * 
+     */
     public int getMissilesNumber()
     {
         return missilesLeft;
     }
     
+    /**
+     * Decrease the number of missiles left in the player's jet by one if a missile was launched from the player's jet.
+     * 
+     */
     public void decreaseMissilesNumber()
     {
         missilesLeft--;
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
     }
     
+    /**
+     * Current level has been passed and set the world to newLevelIntroScreen.
+     * 
+     */
     public void levelPassed()
     {
         myJetSound.stop();
@@ -162,13 +189,21 @@ public class MyWorld extends World
         Greenfoot.setWorld(newLevelIntroScreen);
     }
     
+    /**
+     * The player has won the game and set the world to gameWonScreen.
+     * 
+     */
     public void gameWon()
     {
         myJetSound.stop();
         GameWonScreen gameWonScreen = new GameWonScreen();
         Greenfoot.setWorld(gameWonScreen);
     }
-
+    
+    /**
+     * The player has failed this level.
+     * 
+     */
     public void levelFailed()
     {
         levelFailed = true;
@@ -183,6 +218,10 @@ public class MyWorld extends World
         act();
     }
     
+    /**
+     * Return to thisLevelIntroScreen if the player has failed this level and pressed "r" key.
+     * 
+     */
     public void act()
     {
         if (levelFailed && Greenfoot.isKeyDown("r"))
@@ -193,6 +232,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Start playing the background music again if the start button is pressed.
+     * 
+     */
     public void started()
     {
         if (levelFailed)
@@ -205,6 +248,10 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Pause the background music if the pause button is pressed.
+     * 
+     */
     public void stopped()
     {
         if (levelFailed)

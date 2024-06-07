@@ -31,11 +31,19 @@ public class GameWonScreen extends World
         theme.playLoop();
     }
     
+    /**
+     * Start playing the background music again if the start button is pressed.
+     * 
+     */
     public void started()
     {
         theme.playLoop();
     }
     
+    /**
+     * Pause the music again if the pause button is pressed.
+     * 
+     */
     public void stopped()
     {
         theme.pause();

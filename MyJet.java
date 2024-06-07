@@ -30,16 +30,16 @@ public class MyJet extends Actor
         if (pressedKey != null && pressedKey.equals("space"))
         {
             myMissileSound.play();
-            if (getWorld().getClass().equals(MyWorld.class) && ((MyWorld) getWorld()).getMissilesNumber() > 0)
+            if (getWorld().getClass().equals(TitleScreen.class))
+            {
+                MyMissile myMissile = new MyMissile();
+                getWorld().addObject(myMissile, getX() + 220, getY());
+            }
+            else if (getWorld().getClass().equals(MyWorld.class) && ((MyWorld) getWorld()).getMissilesNumber() > 0)
             {
                 MyMissile myMissile = new MyMissile();
                 getWorld().addObject(myMissile, getX() + 220, getY());
                 ((MyWorld) getWorld()).decreaseMissilesNumber();
-            }
-            else if (getWorld().getClass().equals(TitleScreen.class))
-            {
-                MyMissile myMissile = new MyMissile();
-                getWorld().addObject(myMissile, getX() + 220, getY());
             }
         }
         
