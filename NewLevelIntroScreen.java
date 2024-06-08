@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class NewLevelIntroScreen here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Felix Huang
+ * @version June 2024
  */
 public class NewLevelIntroScreen extends World
 {
@@ -54,6 +54,10 @@ public class NewLevelIntroScreen extends World
         theme.playLoop();
     }
     
+    /**
+     * Set the world to gameWorld if enter key is pressed.
+     * 
+     */
     public void act()
     {
         String pressedKey = Greenfoot.getKey();
@@ -65,11 +69,19 @@ public class NewLevelIntroScreen extends World
         }
     }
     
+    /**
+     * Start playing the background music again if the start button is pressed.
+     * 
+     */
     public void started()
     {
         theme.playLoop();
     }
     
+    /**
+     * Pause the background music if the pause button is pressed.
+     * 
+     */
     public void stopped()
     {
         theme.pause();
