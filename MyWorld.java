@@ -211,7 +211,7 @@ public class MyWorld extends World
         levelFailedMusic.playLoop();
         Label levelFailedLabel = new Label("You Failed", 200);
         addObject(levelFailedLabel, 600, 350);
-        Label returnLabel = new Label("Press <R> key to return to the previous level passing screen\nor Level One introduction screen", 40);
+        Label returnLabel = new Label("Press <R> key to return to the level introduction screen", 40);
         addObject(returnLabel, 600, 500);
         missilesLeft = 0;
         missilesLeftLabel.setValue("Missiles Left: " + missilesLeft);
