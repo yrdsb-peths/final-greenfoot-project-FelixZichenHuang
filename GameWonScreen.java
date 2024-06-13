@@ -1,15 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GameWonScreen here.
+ * The ending screen of the game that shows the player has won the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Felix Huang
+ * @version June 2024
  */
 public class GameWonScreen extends World
 {
     Label label1;
     Label label2;
+    boolean isCheating = true;
     GreenfootSound theme = new GreenfootSound("TopGun.mp3");
     
     /**
@@ -17,7 +18,7 @@ public class GameWonScreen extends World
      * 
      */
     public GameWonScreen()
-    {    
+    {
         // Create a new world with 1200x800 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1, false);
         

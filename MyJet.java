@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyJet here.
+ * The player's jet.
  * 
  * @author Felix Huang 
  * @version May 2024
@@ -18,6 +18,7 @@ public class MyJet extends Actor
         GreenfootSound explosionSound = new GreenfootSound("ExplosionSound.mp3");
         String pressedKey = Greenfoot.getKey();
         
+        // When the "left" or "right" key is pressed, move up or down respectively.
         if (Greenfoot.isKeyDown("left"))
         {
             setLocation(200, getY() - 15);
@@ -27,6 +28,7 @@ public class MyJet extends Actor
             setLocation(200, getY() + 15);
         }
         
+        // When the space bar is pressed for one time, launch a missile. If the jet is in MyWorld.class, decrease the total missile number by one.
         if (pressedKey != null && pressedKey.equals("space"))
         {
             myMissileSound.play();
@@ -43,6 +45,7 @@ public class MyJet extends Actor
             }
         }
         
+        // Remove this MyJet object once it's hit by a EnemyMissile1.class object or EnemyMissile2.class object, create an explosion object, and play explosionSound.
         if (isTouching(EnemyMissile1.class))
         {
             explosionSound.play();

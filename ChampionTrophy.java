@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ChampionTrophy here.
+ * The champoion trophy displayed at the GameWonScreen.
  * 
  * @author (your name) 
  * @version (a version number or a date)

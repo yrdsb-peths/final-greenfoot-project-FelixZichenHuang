@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Medal here.
+ * The medal displayed at the NextLevelIntroScreen for new levels higher than Level 1.
  * 
  * @author Felix Huang 
  * @version May 2024

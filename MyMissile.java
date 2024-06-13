@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyMissile here.
+ * The missile that belongs to the player's Jet.
  * 
  * @author Felix Huang 
  * @version May 2024
@@ -16,6 +16,7 @@ public class MyMissile extends Actor
     {
         move(5);
         
+        // Remove this MyMissile object and when its x position is greater than 1400.
         if (getX() >= 1400)
         {
             getWorld().removeObject(this);

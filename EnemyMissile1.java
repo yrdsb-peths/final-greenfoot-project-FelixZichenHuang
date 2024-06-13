@@ -1,8 +1,7 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyMissile1 here.
+ * The first type of enemy missile.
  * 
  * @author Felix Huang 
  * @version May 2024
@@ -21,6 +20,7 @@ public class EnemyMissile1 extends Actor
         
         MyWorld world = (MyWorld) getWorld();
         
+        // Remove this enemyMissile1 object once it's hit by a MyMissile.class object, create an explosion object, and play explosionSound.
         if (isTouching(MyMissile.class))
         {
             explosionSound.play();
@@ -32,6 +32,7 @@ public class EnemyMissile1 extends Actor
             return;
         }
         
+        // Remove this enemyMissile1 object and create a new enemy jet when its x position is smaller than -200.
         if (getX() <= -200)
         {
             world.removeObject(this);

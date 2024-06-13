@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TitileScreen here.
+ * The title screen of the game.
  * 
  * @author Felix Huang 
  * @version May 2024

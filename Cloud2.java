@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Cloud2 here.
+ * The second type of cloud.
  * 
  * @author Felix Huang 
  * @version May 2024
@@ -18,6 +18,7 @@ public class Cloud2 extends Actor
         
         MyWorld world = (MyWorld) getWorld();
         
+        // Remove this cloud2 object and create a new cloud when its x position is smaller than -200.
         if (getX() <= -200)
         {
             world.removeObject(this);

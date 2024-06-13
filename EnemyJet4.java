@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyJet4 here.
+ * The fourth type of enemy jet.
  * 
  * @author Felix Huang 
  * @version May 2024
@@ -15,10 +15,12 @@ public class EnemyJet4 extends Actor
     public void act()
     {
         move(-12);
+        
         GreenfootSound explosionSound = new GreenfootSound("ExplosionSound.mp3");
         
         MyWorld world = (MyWorld) getWorld();
         
+        // Remove this enemyJet4 object once it's hit by a MyMissile.class object, create an explosion object, play explosionSound, and increase score by one.
         if (isTouching(MyMissile.class))
         {
             explosionSound.play();
@@ -31,6 +33,7 @@ public class EnemyJet4 extends Actor
             return;
         }
         
+        // Remove this enemyJet4 object and create a new enemy jet when its x position is smaller than -200.
         if (getX() <= -200)
         {
             world.removeObject(this);

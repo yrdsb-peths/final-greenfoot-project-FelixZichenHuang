@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NewLevelIntroScreen here.
+ * The screen that introduces a new level to the player.
  * 
  * @author Felix Huang
  * @version June 2024
